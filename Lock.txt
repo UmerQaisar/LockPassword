@@ -1,0 +1,35 @@
+cls
+@ECHO OFF
+title Folder SecretFolder
+if EXIST "Control Panel.{21EC2020-3AEA-1069-A2DD-08002B30309D}" goto UNLOCK
+if NOT EXIST SecretFolder goto MDSecretFolder
+:CONFIRM
+echo hey buddy! You sure? You wanna keep it secret ? ( Y or N )
+set/p "cho=＞"
+if %cho%==Y goto LOCK
+if %cho%==y goto LOCK
+if %cho%==n goto END
+if %cho%==N goto END
+echo Invalid choice.
+goto CONFIRM
+:LOCK
+ren SecretFolder "Control Panel.{21EC2020-3AEA-1069-A2DD-08002B30309D}"
+attrib +h +s "Control Panel.{21EC2020-3AEA-1069-A2DD-08002B30309D}"
+echo hey budyy! you have created a Secret Folder , have some fun .. 
+goto End
+:UNLOCK
+echo STOP STOP enter your password babe ..
+set/p "pass=＞"
+if NOT %pass%==secret1122 goto FAIL
+attrib -h -s "Control Panel.{21EC2020-3AEA-1069-A2DD-08002B30309D}"
+ren "Control Panel.{21EC2020-3AEA-1069-A2DD-08002B30309D}" SecretFolder
+echo hey buddy! your SecretFolder has Unlocked successfully
+goto End
+:FAIL
+echo Invalid password
+goto end
+:MDSecretFolder
+md SecretFolder
+echo hey buddy! you SecretFolder has created successfully
+goto End
+:End
